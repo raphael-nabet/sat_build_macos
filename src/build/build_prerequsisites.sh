@@ -35,11 +35,12 @@ build_all_prerequisites() {
     while read -u 3 package; do
         build_prerequisite "$package" 
 
+        i=$(($i + 1))
         if [ $PROGRESS_BAR -eq 0 ]; then
             draw_progress_bar "$i" "$len"
         fi
 
-        if [ $INTERACTIVE -eq 0 ]; then
+        if [ $INTERACTIVE -eq 0 ] && [ "$i" -ne "$len"  ]; then
             while true; do
                 read -p "Do you want to continue ? (y/n) : " choice
                 case "$choice" in
@@ -49,7 +50,5 @@ build_all_prerequisites() {
                 esac
             done
         fi
-
-        i=$(($i + 1))
     done 3< /tmp/packages.txt
 }
