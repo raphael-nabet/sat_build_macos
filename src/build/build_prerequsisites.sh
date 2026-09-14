@@ -29,8 +29,16 @@ build_all_prerequisites() {
     grep 'Compilation of' /tmp/output.txt | cut -d " " -f 3 > /tmp/packages.txt \
         2> /dev/null
 
+    len=$(grep -c ^ /tmp/packages.txt)
+    i=0
+
     while read -u 3 package; do
         build_prerequisite "$package" 
+
+        if [ $PROGRESS_BAR -eq 0 ]; then
+            draw_progress_bar "$i" "$len"
+        fi
+
         if [ $INTERACTIVE -eq 0 ]; then
             while true; do
                 read -p "Do you want to continue ? (y/n) : " choice
@@ -41,5 +49,7 @@ build_all_prerequisites() {
                 esac
             done
         fi
+
+        i=$(($i + 1))
     done 3< /tmp/packages.txt
 }
