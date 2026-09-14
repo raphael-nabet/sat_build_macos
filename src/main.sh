@@ -1,10 +1,11 @@
 #!/bin/sh
 
-. "$PWD"/config.sh
-. "$PWD"/utils/help.sh
-. "$PWD"/utils/error.sh
-. "$PWD"/utils/parse_args.sh
-. "$PWD"/build/build_prerequsisites.sh
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+. "$SCRIPT_DIR"/config.sh
+. "$SCRIPT_DIR"/utils/help.sh
+. "$SCRIPT_DIR"/utils/error.sh
+. "$SCRIPT_DIR"/utils/parse_args.sh
+. "$SCRIPT_DIR"/build/build_prerequsisites.sh
 
 init() {
     cd $SALOME_WORKSPACE/SAT
@@ -21,7 +22,7 @@ setup() {
 } 
 
 main() {
-    parse_arguments
+    parse_arguments "$@"
     cd $SALOME_WORKSPACE
     if [ "$VIRTUAL" -eq 0 ]; then 
         setup 
@@ -40,4 +41,4 @@ main() {
     exit 0
 }
 
-main
+main "$@"
