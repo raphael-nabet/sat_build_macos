@@ -30,7 +30,7 @@ build_all_prerequisites() {
         2> /dev/null
 
     while read -u 3 package; do
-        compile_prerequisite "$package" 
+        build_prerequisite "$package" 
         if [ $INTERACTIVE -eq 0 ]; then
             while true; do
                 read -p "Do you want to continue ? (y/n) : " choice
