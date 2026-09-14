@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 . "$SCRIPT_DIR"/utils/help.sh
 . "$SCRIPT_DIR"/utils/error.sh
 . "$SCRIPT_DIR"/utils/parse_args.sh
+. "$SCRIPT_DIR"/utils/progress_bar.sh
 . "$SCRIPT_DIR"/build/build_prerequsisites.sh
 
 init() {

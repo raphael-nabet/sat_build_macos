@@ -40,6 +40,10 @@ parse_arguments() {
                 INIT=0
                 shift 
                 ;;
+            -s | --show-progress-bar)
+                PROGRESS_BAR=0
+                shift
+                ;;
             --)
                 shift
                 ;;
