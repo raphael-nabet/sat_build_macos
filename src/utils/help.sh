@@ -1,11 +1,11 @@
-#!/bin/sh 
+#!/bin/sh
 
-help() {                                                               
+help() {
     echo 'OVERVIEW: Script to build SALOME on macOS
 
     USAGE: build <args> -- [<filenames>]
-    
-    OPTIONS:                                                                    
+
+    OPTIONS:
       -t | --interactive            Enable interactive mode
       -i | --init                   Expose SAT_SALOME to SAT
       -p | --package                Build a specific package
@@ -14,5 +14,6 @@ help() {
       -v | --virtual-env            Enable python virtual environement
       -a | --all                    Build all packages
       -d | --display                Show all the installation that have succeeded and failed
+      -u | --update                 Update the SAT and SAT_SALOME repositories and execute the build command
       -h | --help                   Display available options'
 }
