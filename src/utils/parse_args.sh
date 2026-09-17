@@ -11,6 +11,10 @@ parse_arguments() {
                 help
                 exit 1
                 ;;
+            -u | --update)
+                UPDATE=0
+                shift
+                ;;
             -t | --interactive)
                 INTERACTIVE=0
                 shift

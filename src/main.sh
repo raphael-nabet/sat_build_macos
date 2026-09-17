@@ -21,13 +21,25 @@ setup() {
     python3 -m venv .venv
     source .venv/bin/activate 
     pip install distro
-} 
+}
+
+update() {
+    cd "$SCRIPT_DIR"
+    git pull
+    cd $SALOME_WORKSPACE/SAT
+    git pull
+    cd $SALOME_WORKSPACE/SAT_SALOME
+    git pull
+}
 
 main() {
     parse_arguments "$@"
     cd $SALOME_WORKSPACE
+    if [ "$UPDATE" -eq 0 ]; then 
+        update
+    fi
     if [ "$VIRTUAL" -eq 0 ]; then 
-        setup 
+        setup
     fi
     if [ "$INIT" -eq 0 ]; then
         init
