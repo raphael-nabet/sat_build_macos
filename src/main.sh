@@ -35,10 +35,10 @@ update() {
 main() {
     parse_arguments "$@"
     cd $SALOME_WORKSPACE
-    if [ "$UPDATE" -eq 0 ]; then 
+    if [ "$UPDATE" -eq 0 ]; then
         update
     fi
-    if [ "$VIRTUAL" -eq 0 ]; then 
+    if [ "$VIRTUAL" -eq 0 ]; then
         setup
     fi
     if [ "$INIT" -eq 0 ]; then
