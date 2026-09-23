@@ -15,6 +15,10 @@ parse_arguments() {
                 UPDATE=0
                 shift
                 ;;
+            -f | --fresh-install)
+                FRESH=0
+                shift
+                ;;
             -t | --interactive)
                 INTERACTIVE=0
                 shift
