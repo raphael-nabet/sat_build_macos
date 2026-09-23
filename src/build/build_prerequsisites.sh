@@ -3,7 +3,18 @@
 build_prerequisite() { 
     prepare=1
 
-    echo $SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/SOURCES/"$1
+    echo "$SALOME_WORKSPACE/$INSTALLATION_FOLDER/SOURCES/$1"
+    if [ "$FRESH" -eq 0 ]; then
+        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/SOURCES/"$1"
+        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/INSTALL/"$1"
+        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/BUILD/"$1"
+        "$SALOME_WORKSPACE"/SAT/sat prepare "$SALOME_VERSION" -p "$1" 
+        recovery_error "Prepare $1 prerequisite failed"
+        "$SALOME_WORKSPACE"/SAT/sat compile "$SALOME_VERSION" -p "$1"
+        recovery_error "Compile $1 prerequisite failed"
+        return 0
+    fi
+
     if [ -d "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/SOURCES/"$1" ] || [ $PREPARE -eq 0 ]; then
         echo "No need to prepare"
     else
@@ -15,11 +26,12 @@ build_prerequisite() {
 
     if [ $? -ne 0 ] && [ "$prepare" -eq 1 ] && [ $PREPARE -eq 1 ]; then
         "$SALOME_WORKSPACE"/SAT/sat prepare "$SALOME_VERSION" -p "$1" 
+        recovery_error "Prepare $1 prerequisite failed"
         "$SALOME_WORKSPACE"/SAT/sat compile "$SALOME_VERSION" -p "$1"
     fi
 
     recovery_error "Compile $1 prerequisite failed"
-} 
+}
 
 
 build_all_prerequisites() {

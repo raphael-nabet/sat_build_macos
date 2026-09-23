@@ -11,6 +11,7 @@ help() {
       -p | --package                Build a specific package
       -s | --show-progress-bar      Show the current progress of the installation
       -n | --no-prepare             Disable prepare step
+      -f | --fresh-install          Enable fresh install with prepare step
       -v | --virtual-env            Enable python virtual environement
       -a | --all                    Build all packages
       -d | --display                Show all the installation that have succeeded and failed
