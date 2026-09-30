@@ -21,7 +21,7 @@ function synthesis() {
     success=$(grep -c ^ /tmp/success-packages.txt)
     failed=$(grep -c ^ /tmp/failed-packages.txt)
 
-    python3 "$SCRIPT_DIR"/utils/chart.py "$success" "$len"
+    python3 "$SCRIPT_DIR"/utils/chart.py "$success" "$len" #"$INSTALLATION_FOLDER/
 
 #    echo 'Success Packages :'
 #    while read -r package; do
