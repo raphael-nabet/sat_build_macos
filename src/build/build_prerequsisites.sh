@@ -3,14 +3,10 @@
 build_prerequisite() { 
     prepare=1
 
-    echo "$SALOME_WORKSPACE/$INSTALLATION_FOLDER/SOURCES/$1"
     if [ "$FRESH" -eq 0 ]; then
-        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/SOURCES/"$1"
-        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/INSTALL/"$1"
-        rm -rf "$SALOME_WORKSPACE"/"$INSTALLATION_FOLDER"/BUILD/"$1"
-        "$SALOME_WORKSPACE"/SAT/sat prepare "$SALOME_VERSION" -p "$1" 
+        "$SALOME_WORKSPACE"/SAT/sat prepare "$SALOME_VERSION" -p "$1"
         recovery_error "Prepare $1 prerequisite failed"
-        "$SALOME_WORKSPACE"/SAT/sat compile "$SALOME_VERSION" -p "$1"
+        "$SALOME_WORKSPACE"/SAT/sat compile "$SALOME_VERSION" -p "$1" --clean_all
         recovery_error "Compile $1 prerequisite failed"
         return 0
     fi
@@ -38,10 +34,10 @@ build_all_prerequisites() {
     "$SALOME_WORKSPACE"/SAT/sat compile "$SALOME_VERSION" --show \
         > /tmp/output.txt 2> /dev/null
 
-    grep 'Compilation of' /tmp/output.txt | cut -d " " -f 3 > /tmp/packages.txt \
+    grep 'Not installed' /tmp/output.txt | cut -d " " -f 3 > /tmp/failed-packages.txt \
         2> /dev/null
 
-    len=$(grep -c ^ /tmp/packages.txt)
+    len=$(grep -c ^ /tmp/failed-packages.txt)
     i=0
 
     while read -u 3 package; do
@@ -62,5 +58,5 @@ build_all_prerequisites() {
                 esac
             done
         fi
-    done 3< /tmp/packages.txt
+    done 3< /tmp/failed-packages.txt
 }
