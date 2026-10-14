@@ -15,6 +15,9 @@ function synthesis() {
     grep 'ignored' /tmp/output.txt | cut -d " " -f 3 >> /tmp/success-packages.txt \
         2> /dev/null
 
+    grep 'native' /tmp/output.txt | cut -d " " -f 3 >> /tmp/success-packages.txt \
+        2> /dev/null
+
     grep 'Not installed' /tmp/output.txt | cut -d " " -f 3 > /tmp/failed-packages.txt \
         2> /dev/null
 
