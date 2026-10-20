@@ -12,4 +12,4 @@ UPDATE=1
 PACKAGE=""
 export SALOME_VERSION=SALOME-9.16.0-macOS
 export INSTALLATION_FOLDER="$SALOME_VERSION"25
-export SALOME_WORKSPACE=~/workspace/current
+export SALOME_WORKSPACE=$(cat ${SCRIPT_DIR}/workspace.txt)
