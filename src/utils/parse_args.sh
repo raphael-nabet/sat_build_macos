@@ -52,6 +52,12 @@ parse_arguments() {
                 PROGRESS_BAR=0
                 shift
                 ;;
+            -w | --set-workspace)
+                echo "$2" > ${SCRIPT_DIR}/workspace.txt
+                export SALOME_WORKSPACE=$(cat ${SCRIPT_DIR}/workspace.txt)
+                shift
+                shift
+                ;;
             --)
                 shift
                 ;;

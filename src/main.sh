@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+export SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 . "$SCRIPT_DIR"/config.sh
 . "$SCRIPT_DIR"/utils/help.sh
 . "$SCRIPT_DIR"/utils/error.sh
