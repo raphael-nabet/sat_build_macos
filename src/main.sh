@@ -18,8 +18,9 @@ init() {
 }
 
 setup() {
+    cd "$SALOME_WORKSPACE"
     python3 -m venv .venv
-    source .venv/bin/activate 
+    source .venv/bin/activate
     pip install distro
 }
 
@@ -32,9 +33,22 @@ update() {
     git pull
 }
 
+package() {
+    "$SALOME_WORKSPACE"/SAT/sat prepare "$SALOME_VERSION" -p SAMPLES
+    if [ "$PACKAGE_EXT" = ".tar.gz" ]; then
+        SAT/sat package "$SALOME_VERSION" -b --without_properties not_in_package:'yes'
+    else
+        SAT/sat package_dmg "$SALOME_VERSION" --replace --icon "$SCRIPT_DIR"/salome.png
+    fi
+}
+
 main() {
     parse_arguments "$@"
     cd $SALOME_WORKSPACE
+    if [ -n "$PACKAGE_EXT" ]; then
+        package
+        exit 0
+    fi
     if [ "$UPDATE" -eq 0 ]; then
         update
     fi
