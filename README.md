@@ -8,8 +8,8 @@ interface to build SALOME using SAT and SAT SALOME.
 ```bash
 git clone https://github.com/raphael-nabet/sat_build_macos.git ~/sat_build_macOS
 ```
-
-WARNING : I recommend you to create an alias to use this project
+> [!TIP]
+> I recommend you to create an alias to use this project
 ```bash
 alias build="~/sat_build_salome/src/main.sh"
 # You can export it to your zshrc if you want
@@ -30,8 +30,8 @@ cd $MY_WORKSPACE
 git clone https://github.com/raphael-nabet/sat.git SAT
 git clone https://github.com/raphael-nabet/sat_salome.git SAT_SALOME
 ```
-
-WARNING: this project is still in development; make sure you are in the right branch.
+> [!WARNING]
+> This project is still in development; make sure you are in the right branch.
 ```bash
 cd $MY_WORKSPACE/SAT_SALOME
 git switch support-for-macos-platform
@@ -71,8 +71,8 @@ build package --dmg # To create a dmg installer
 # or
 build package --tar # To create a tar.gz archive
 ```
-
-WARNING: the tar.gz archive works only on the build machine, the archive is not portable.
+> [!WARNING]
+> The tar.gz archive works only on the build machine, the archive is not portable.
 
 ## Some Tools
 
