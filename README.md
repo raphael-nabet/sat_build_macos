@@ -41,9 +41,9 @@ git switch support-for-macos-platform
 
 Setup your installation parameters. For this example we are going to build SALOME-9.16.0
 ```bash
+build -w "$MY_WORKSPACE" -z "9.16.0"
 build -v # create a virtual environment for Python
 source $MY_WORKSPACE/.venv/bin/activate
-build -w "$MY_WORKSPACE" -z "9.16.0"
 ```
 
 ## How to use it ?
