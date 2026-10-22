@@ -5,6 +5,29 @@ parse_arguments() {
         help
         exit 1
     fi
+    if [ "$1" = "package" ]; then
+        shift
+        while [ "$#" -gt 0 ]; do
+            case "$1" in
+                -d | --dmg)
+                    PACKAGE_EXT=".dmg"
+                    return 0
+                ;;
+                -t | --tar)
+                    PACKAGE_EXT=".tar.gz"
+                    return 0
+                ;;
+                *)
+                    echo 'Invalid Arguments'
+                    help
+                    exit 1
+                ;;
+            esac
+        done
+        echo 'Invalid Arguments'
+        help
+        exit 1
+    fi
     while [ "$#" -gt 0 ]; do
         case "$1" in
             -h | --help)
@@ -55,6 +78,13 @@ parse_arguments() {
             -w | --set-workspace)
                 echo "$2" > ${SCRIPT_DIR}/workspace.txt
                 export SALOME_WORKSPACE=$(cat ${SCRIPT_DIR}/workspace.txt)
+                shift
+                shift
+                ;;
+            -z | --set-version)
+                echo "$2" > ${SCRIPT_DIR}/version.txt
+                export VERSION=$(cat ${SCRIPT_DIR}/workspace.txt)
+                export SALOME_VERSION=SALOME-${VERSION}-macOS
                 shift
                 shift
                 ;;
