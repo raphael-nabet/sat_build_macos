@@ -6,14 +6,14 @@ interface to build SALOME using SAT and SAT SALOME.
 ## How to setup the project ?
 
 ```bash
-git clone https://github.com/raphael-nabet/sat_build_macos.git ~/sat_build_macOS
+git clone https://github.com/raphael-nabet/sat_build_macos.git ~/sat_build_macos
 ```
 > [!TIP]
 > I recommend you to create an alias to use this project
 > ```bash
->alias build="~/sat_build_salome/src/main.sh"
+>alias build="~/sat_build_macos/src/main.sh"
 ># You can export it to your zshrc if you want
->echo 'alias build="~/sat_build_salome/src/main.sh"' >> ~/.zshrc
+>echo 'alias build="~/sat_build_macos/src/main.sh"' >> ~/.zshrc
 >source ~/.zshrc
 >```
 
