@@ -10,12 +10,12 @@ git clone https://github.com/raphael-nabet/sat_build_macos.git ~/sat_build_macOS
 ```
 > [!TIP]
 > I recommend you to create an alias to use this project
-```bash
-alias build="~/sat_build_salome/src/main.sh"
-# You can export it to your zshrc if you want
-echo 'alias build="~/sat_build_salome/src/main.sh"' >> ~/.zshrc
-source ~/.zshrc
-```
+> ```bash
+>alias build="~/sat_build_salome/src/main.sh"
+># You can export it to your zshrc if you want
+>echo 'alias build="~/sat_build_salome/src/main.sh"' >> ~/.zshrc
+>source ~/.zshrc
+>```
 
 First you need to set up your workspace. It’s in this workspace that you are going to build SALOME
 ```bash
@@ -32,12 +32,12 @@ git clone https://github.com/raphael-nabet/sat_salome.git SAT_SALOME
 ```
 > [!WARNING]
 > This project is still in development; make sure you are in the right branch.
-```bash
-cd $MY_WORKSPACE/SAT_SALOME
-git switch support-for-macos-platform
-cd $MY_WORKSPACE/SAT_SALOME
-git switch support-for-macos-platform
-```
+>```bash
+>cd $MY_WORKSPACE/SAT_SALOME
+>git switch support-for-macos-platform
+>cd $MY_WORKSPACE/SAT_SALOME
+>git switch support-for-macos-platform
+>```
 
 Setup your installation parameters. For this example we are going to build SALOME-9.16.0
 ```bash
@@ -94,7 +94,7 @@ OVERVIEW: Script to build SALOME on macOS
       -v | --virtual-env            Enable python virtual environement
       -a | --all                    Build all packages
       -d | --display                Show all the installation that have succeeded and failed
-      -u | --update                 Update the SAT and SAT_SALOME repositories and execute the build command
+      -u | --update                 Update the SAT, SAT_SALOME and build repositories
       -h | --help                   Display available options
 
     build commands:
